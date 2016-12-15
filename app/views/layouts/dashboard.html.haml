@@ -1,0 +1,48 @@
+!!!
+%html
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no'}
+    %meta{'http-equiv': 'x-ua-compatible', content: 'ie=edge'}
+    %title PayPlus Alpha Dashboard
+    = csrf_meta_tags
+    = stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'dashboard', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar.navbar-full.red.darken-2.text-white
+      %a.navbar-brand.text-white{href: root_path}
+        %b
+          %i PayPlus
+      %ul.nav.navbar-nav
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle.text-white{data:{toggle: 'dropdown'}}
+            = icon 'shopping-cart'
+            %span.hidden-xs-down
+              Mis Comercios
+          .dropdown-menu
+            - if current_user.shops.exists?
+              - current_user.shops.each do |s|
+                %a.dropdown-item #{s.name}
+            - else
+              .dropdown-header
+                Sin comercios asociados
+            .dropdown-divider
+            %a.dropdown-item.text-xs-center{href: shop_create_path}
+              = icon 'plus'
+              %b Nuevo comercio
+      %ul.nav.navbar-nav
+        %li.nav-item.dropdown.margin-left
+          %a.nav-link.text-white
+            = icon 'credit-card'
+            %span.hidden-xs-down
+              Solicitar Avance
+      %ul.nav.navbar-nav.nav-flex-icons
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle.text-white{data:{toggle: 'dropdown'}}
+            = icon 'user'
+            %span.hidden-xs-down
+              = current_user.email
+          .dropdown-menu.dropdown-menu-right
+            .text-xs-center
+              = link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'dropdown-item', data: {confirm: '¿Desconectar?'}
+    = yield

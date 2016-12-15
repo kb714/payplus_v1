@@ -1,0 +1,22 @@
+= render 'devise/shared/logo' do
+  .col-xs-12.col-md-6.offset-md-3.col-lg-6.form-container-parent
+    .card
+      .card-block
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = render 'devise/shared/alert'
+          .field
+            = f.label 'Correo electrónico'
+            %br/
+            = f.email_field :email, autofocus: true
+          .field
+            = f.label 'Contraseña'
+            %br/
+            = f.password_field :password, autocomplete: 'off'
+          - if devise_mapping.rememberable?
+            .field
+              = f.check_box :remember_me
+              = f.label 'Recordar'
+          %hr
+          = f.button 'Ingresar', :class => 'btn btn-danger btn-block', data: {:disable_with => 'Verificando'}
+          %hr
+          = render 'devise/shared/links'

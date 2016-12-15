@@ -1,0 +1,10 @@
+- if notice
+  .alert.alert-info.alert-dismissible.fade.in
+    %button.close{data: {:dismiss => 'alert'}}
+      %span &times;
+    = notice
+- if alert
+  .alert.alert-danger.alert-dismissible.fade.in
+    %button.close{data: {:dismiss => 'alert'}}
+      %span &times;
+    = alert

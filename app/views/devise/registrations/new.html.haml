@@ -1,0 +1,27 @@
+= render 'devise/shared/logo'
+.container
+  .row
+    .col-xs-12.col-md-6.offset-md-3.col-lg-6.form-container-parent
+      .card
+        .card-block
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            = devise_error_messages!
+            .field
+              = f.label 'Correo electrónico'
+              %br/
+              = f.email_field :email, autofocus: true
+            .field
+              = f.label 'Contraseña'
+              - if @minimum_password_length
+                %i
+                  (#{@minimum_password_length} caracteres mínimos)
+              %br/
+              = f.password_field :password, autocomplete: 'off'
+            .field
+              = f.label 'Confirme contraseña'
+              %br/
+              = f.password_field :password_confirmation, autocomplete: 'off'
+            %hr
+            = f.button 'Registrar', class: 'btn btn-danger btn-block', data: {disable_with: 'Validando'}
+          %hr
+          = render 'devise/shared/links'

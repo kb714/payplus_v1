@@ -1,0 +1,33 @@
+// Place all the styles related to the Dashboard controller here.
+// They will automatically be included in application.scss.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+*= require sweetalert2
+*/
+@import "bootstrap";
+@import "mdb";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+body{
+  background-color: color('grey', 'lighten-4');
+}
+.navbar{
+  border-radius: 0;
+  .navbar-nav{
+    .nav-item{
+      font-size: 14px;
+      border-radius: 5px;
+      background-color: color('red', 'darken-4');
+      &.open{
+        background-color: color('blue-grey', 'darken-4');
+      }
+      &.margin-left{
+        margin-left: 3px;
+      }
+      &.margin-right{
+        margin-right: 3px;
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.container
+  .row
+    .partial-title
+      = 'Sección' unless @section_title
+  .row
+    .col-xs-12
+      .card
+        = yield

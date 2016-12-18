@@ -22,12 +22,12 @@
           .dropdown-menu
             - if current_user.shops.exists?
               - current_user.shops.each do |s|
-                %a.dropdown-item #{s.name}
+                %a.dropdown-item{href: shop_path(s.slug)} #{s.name}
             - else
               .dropdown-header
                 Sin comercios asociados
             .dropdown-divider
-            %a.dropdown-item.text-xs-center{href: shop_create_path}
+            %a.dropdown-item.text-xs-center{href: new_shop_path}
               = icon 'plus'
               %b Nuevo comercio
       %ul.nav.navbar-nav

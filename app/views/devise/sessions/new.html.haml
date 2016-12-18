@@ -17,6 +17,6 @@
               = f.check_box :remember_me
               = f.label 'Recordar'
           %hr
-          = f.button 'Ingresar', :class => 'btn btn-danger btn-block', data: {:disable_with => 'Verificando'}
+          = f.button 'Ingresar', :class => 'btn btn-danger btn-block', shop: {:disable_with => 'Verificando'}
           %hr
           = render 'devise/shared/links'

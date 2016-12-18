@@ -1,5 +1,5 @@
 = render 'shop/shared/structure' do
   .card-block
-    = simple_form_for @shop, remote: true, url: api_v1_shop_store_path do |f|
+    = simple_form_for @shop, url: shop_index_path do |f|
       = f.input :name, label: 'Nombre de comercio'
       = f.submit 'Crear Comercio', class: 'btn btn-danger'

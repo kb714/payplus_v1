@@ -5,6 +5,7 @@ class CreateShops < ActiveRecord::Migration[5.0]
       t.string  :secret_key
 
       t.string  :name
+      t.string  :slug
       t.text    :description
       t.string  :img
 

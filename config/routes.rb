@@ -9,18 +9,8 @@ Rails.application.routes.draw do
   ## Dashboard Routes
   root to: 'dashboard#index'
   # shop routes
-  get 'shop/create'
-  get 'shop/show'
-  get 'shop/edit'
-
-  ## api routes
-  namespace :api do
-    namespace :v1 do
-      post 'shop/store'
-      put 'shop/update'
-      delete 'shop/destroy'
-    end
-  end
+  get ':slug', to: 'shop#show', as: :shop
+  resources :shop
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

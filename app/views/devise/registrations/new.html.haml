@@ -22,6 +22,6 @@
               %br/
               = f.password_field :password_confirmation, autocomplete: 'off'
             %hr
-            = f.button 'Registrar', class: 'btn btn-danger btn-block', data: {disable_with: 'Validando'}
+            = f.button 'Registrar', class: 'btn btn-danger btn-block', shop: {disable_with: 'Validando'}
           %hr
           = render 'devise/shared/links'

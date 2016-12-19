@@ -48,7 +48,7 @@ $input-border-color: color("grey", "darken-4") !default;
 $input-bg-color: #fff !default;
 $input-error-color: $error-color !default;
 $input-success-color: $success-color !default;
-$input-focus-color: $primary-color !default;
+$input-focus-color: color("red", "darken-2") !default;
 $label-font-size: .8rem !default;
 $input-disabled-color: rgba(0,0,0, .46) !default;
 $input-disabled-solid-color: #BDBDBD !default;

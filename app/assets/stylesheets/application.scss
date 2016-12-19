@@ -37,3 +37,26 @@ body{
 .alert.alert-info{
   background-color: color('blue', 'lighten-1');
 }
+.form-group{
+  &.has-error{
+    .help-block{
+      display: block;
+      color: color('red', 'darken-2');
+      border-left: 3px solid color('red', 'darken-2');
+      padding-left: 5px;
+      margin-top: -10px;
+    }
+    label{
+      color: color('red', 'darken-2');
+    }
+  }
+  .form-control:focus {
+    color: #55595c;
+    background-color: #fff;
+    border-color: color('red', 'darken-2');
+    outline: none;
+  }
+}
+.custom-control-input:checked ~ .custom-control-indicator {
+  background-color: color('red', 'darken-2');
+}

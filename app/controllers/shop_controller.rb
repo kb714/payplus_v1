@@ -2,30 +2,58 @@ class ShopController < ApplicationController
   before_action :authenticate_user!
   layout 'dashboard'
 
-  def new
-    @shop = Shop.new
+  def index
+
   end
 
   def create
     @shop = current_user.shops.new(secure_params)
     if @shop.valid?
       @shop.save
-      redirect_to root_path
+      redirect_to @shop
     else
-      render 'new'
+      render action: :new
     end
   end
 
-  def show
-    @shop = current_user.shops.find_by(slug: params[:slug])
+  def new
+    @section = {title: 'Creando nuevo comercio', icon: 'plus'}
+    @shop = Shop.new
   end
 
   def edit
+    @section = {title: 'Editanto comercio', icon: 'pencil-square-o'}
+    @shop = current_user.shops.find_by(slug: params[:slug])
+  end
+
+  def show
+    @section = {title: 'Servicios asociados', icon: 'globe'}
+    @shop = current_user.shops.find_by(slug: params[:slug])
+  end
+
+  def update
+    @shop = Shop.find_by(slug: params[:slug])
+
+    if @shop.update(secure_params)
+      redirect_to @shop
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @shop = Shop.find_by(slug: params[:slug])
+
+    if @shop.destroy
+      redirect_to root_path
+    else
+      render 'show'
+    end
   end
 
   private
 
   def secure_params
-    params.require(:shop).permit(:id, :name, :slug, :description, :img, :url, :notify_url)
+    params.require(:shop).permit(:id, :name, :description, :image, :url, :notify_url)
   end
 end

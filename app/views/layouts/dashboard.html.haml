@@ -20,9 +20,11 @@
             %span.hidden-xs-down
               Mis Comercios
           .dropdown-menu
-            - if current_user.shops.exists?
-              - current_user.shops.each do |s|
-                %a.dropdown-item{href: shop_path(s.slug)} #{s.name}
+            - if @shops.exists?
+              - @shops.each do |s|
+                %a.dropdown-item{href: shop_path(slug: s.slug.to_s)}
+                  %b
+                    #{s.name}
             - else
               .dropdown-header
                 Sin comercios asociados
@@ -44,5 +46,5 @@
               = current_user.email
           .dropdown-menu.dropdown-menu-right
             .text-xs-center
-              = link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete, class: 'dropdown-item', data: {confirm: '¿Desconectar?'}
+              = link_to 'Cerrar Sesión', destroy_user_session_path, class: 'dropdown-item', method: :delete
     = yield

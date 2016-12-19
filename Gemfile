@@ -65,8 +65,9 @@ gem 'font-awesome-sass'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
-  gem 'rails-assets-sweetalert2'
+  gem 'rails-assets-sweetalert2', '~> 5.1.1'
 end
+gem 'sweet-alert2-rails'
 gem 'simple_form'
 gem 'client_side_validations',
     github: 'DavyJonesLocker/client_side_validations',
@@ -74,3 +75,5 @@ gem 'client_side_validations',
 gem 'client_side_validations-simple_form',
     github: 'DavyJonesLocker/client_side_validations-simple_form',
     branch: 'rails5'
+# file upload
+gem 'paperclip', '~> 5.0.0'

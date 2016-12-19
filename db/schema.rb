@@ -17,15 +17,18 @@ ActiveRecord::Schema.define(version: 20161214191038) do
 
   create_table "shops", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "shop_id"
     t.string   "secret_key"
     t.string   "name"
+    t.string   "slug"
     t.text     "description"
-    t.string   "img"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.string   "url"
     t.string   "notify_url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|

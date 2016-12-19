@@ -1,2 +1,56 @@
-%h1 Shop#show
-%p Find me in app/views/shop/show.html.haml
+= render 'partials/content_structure' do
+  %nav.navbar.z-depth-0
+    .navbar-brand #{@shop.name}
+    %ul.nav.navbar-nav.nav-flex-icons
+      %li.nav-item.avatar
+        %a.nav-link.waves-effect.btn-flat{href: edit_shop_path(slug: @shop.slug.to_s)}
+          = icon 'pencil-square-o'
+          Editar
+      %li.nav-item.avatar
+        = link_to shop_path(slug: @shop.slug.to_s),
+        data: {confirm: '¿Desea eliminar este comercio?', 'sweet-alert-type': 'warning'},
+        method: :delete, class: 'nav-link waves-effect btn-flat' do
+          = icon 'trash-o'
+          Eliminar
+  %ul.nav.nav-tabs.md-pills.pills-default
+    %li.nav-item
+      %a.nav-link.active.text-xs-center
+        = icon 'home'
+        Inicio
+    %li.nav-item
+      %a.nav-link.text-xs-center
+        = icon 'credit-card'
+        Botones de pago
+    %li.nav-item
+      %a.nav-link.text-xs-center
+        = icon 'envelope'
+        Cobros por email
+    %li.nav-item
+      %a.nav-link.text-xs-center
+        = icon 'file'
+        Páginas de cobro
+  .card-block
+    %p Información de su comercio
+    .table-responsive
+      %table.table.table-bordered.table-striped
+        %tbody
+          %tr
+            %td.collapsing Nombre
+            %td #{@shop.name}
+          %tr
+            %td.collapsing Descripción
+            %td #{@shop.description_param}
+          %tr
+            %td.collapsing Fecha de creación
+            %td #{@shop.created_at}
+          %tr
+            %td.collapsing ID de comercio
+            %td #{@shop.id}
+          %tr
+            %td.collapsing Llave secreta
+            %td #{@shop.secret_key}
+          %tr
+            %td.collapsing Imagen
+            %td
+              = image_tag @shop.image.url(:thumb)
+

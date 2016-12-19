@@ -1,5 +1,16 @@
-= render 'shop/shared/structure' do
+= render 'partials/content_structure' do
   .card-block
-    = simple_form_for @shop, url: shop_index_path do |f|
+    .card.card-info.z-depth-0
+      .card-block
+        %p.white-text Para crear un nuevo comercio complete todos los campos con asterisco (#{icon 'asterisk'})
+    %hr
+    = simple_form_for @shop, url: shop_index_path, :html => { :multipart => true } do |f|
       = f.input :name, label: 'Nombre de comercio'
+      = f.input :description, as: :text
+      %label Seleccione una imagen
+      %br
+      = f.file_field :image, as: :file
+      %hr
+      = f.input :url, label: 'Dirección web del comercio'
+      = f.input :notify_url, label: 'URL de notificaciones'
       = f.submit 'Crear Comercio', class: 'btn btn-danger'

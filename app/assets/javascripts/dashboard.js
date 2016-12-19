@@ -16,38 +16,16 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require sweetalert2
+//= require sweet-alert2-rails
 //= require turbolinks
 //= require shop
 
 
-//Override the default confirm dialog by rails
-$.rails.allowAction = function(link){
-    if (link.data("confirm") == undefined){
-        return true;
-    }
-    $.rails.showConfirmationDialog(link);
-    return false;
-}
-
-//User click confirm button
-$.rails.confirmed = function(link){
-    link.data("confirm", null);
-    link.trigger("click.rails");
-}
-
-//Display the confirmation dialog
-$.rails.showConfirmationDialog = function(link){
-    var message = link.data("confirm");
-    swal({
-        title: message,
-        type: 'info',
-        confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonColor: '#F44336',
-        showCancelButton: true,
-        animation: false,
-        customClass: 'animated fadeIn'
-    }).then(function(e){
-        $.rails.confirmed(link);
-    });
+window.sweetAlertConfirmConfig = {
+    title: 'Confirmación',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#F44336',
+    confirmButtonText: 'Confirmar',
+    cancelButtonText: 'Cancelar'
 };

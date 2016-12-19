@@ -12,17 +12,18 @@ input[type=number],
 input[type=search-md],
 input[type=search],
 textarea.md-textarea {
+    padding: 5px;
     // General Styles
     background-color: transparent;
-    border: none;
+    //border: none;
     border-bottom: 1px solid $input-border-color;
-    border-radius: 0;
+    //border-radius: 0;
     outline: none;
     height: 2.1rem;
     width: 100%;
     font-size: 1rem;
     box-shadow: none;
-    @include box-sizing(content-box);
+    //@include box-sizing(content-box);
     transition: all .3s;
     // Disabled input style
     &:disabled,
@@ -90,9 +91,6 @@ label {
 }
 
 .form-control {
-    padding: 0;
-    padding-bottom: 0.6rem;
-    padding-top: 0.5rem;
     font-size: 1rem;
     line-height: 1.5;
     background-color: transparent;

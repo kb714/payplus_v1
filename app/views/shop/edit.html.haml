@@ -1,2 +1,16 @@
-%h1 Shop#edit
-%p Find me in app/views/shop/edit.html.haml
+= render 'partials/content_structure' do
+  .card-block
+    = simple_form_for @shop, url: shop_path(slug: @shop.slug.to_s), :html => { :multipart => true } do |f|
+      = f.input :name, label: 'Nombre de comercio'
+      = f.input :description, label: 'Descripción', as: :text
+      %label Seleccione una imagen (dejar en blanco para mantener)
+      %br
+      = f.file_field :image, as: :file
+      %br
+      %label Imagen actual:
+      = image_tag @shop.image.url(:thumb)
+      %hr
+      = f.input :url, label: 'Dirección web del comercio'
+      = f.input :notify_url, label: 'URL de notificaciones'
+      = f.submit 'Editar Comercio', class: 'btn btn-danger'
+      = link_to 'Cancelar', shop_path(slug: @shop.slug.to_s), class: 'btn-flat'

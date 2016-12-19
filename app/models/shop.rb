@@ -8,18 +8,18 @@ class Shop < ApplicationRecord
 
   validates :name, presence: true, uniqueness: {scope: :user_id, :case_sensitive => false}
 
-  before_create :setSecretKey, :generateSlug
-  before_update :updateSlug
+  before_create :set_secret_key, :generate_slug
+  before_update :update_slug
 
-  def setSecretKey
+  def set_secret_key
     self.secret_key = SecureRandom.hex 32
   end
 
-  def generateSlug
+  def generate_slug
     self.slug = self.name.parameterize
   end
 
-  def updateSlug
+  def update_slug
     self.slug = self.name.parameterize
   end
 

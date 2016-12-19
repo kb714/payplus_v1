@@ -19,6 +19,8 @@
 //= require sweet-alert2-rails
 //= require turbolinks
 //= require shop
+//= require rails.validations
+//= require rails.validations.simple_form
 
 
 window.sweetAlertConfirmConfig = {

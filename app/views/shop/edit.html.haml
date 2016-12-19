@@ -12,5 +12,5 @@
       %hr
       = f.input :url, label: 'Dirección web del comercio'
       = f.input :notify_url, label: 'URL de notificaciones'
-      = f.submit 'Editar Comercio', class: 'btn btn-danger'
+      = f.submit 'Editar Comercio', class: 'btn btn-danger btn-md'
       = link_to 'Cancelar', shop_path(slug: @shop.slug.to_s), class: 'btn-flat'

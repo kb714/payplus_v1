@@ -1,6 +1,6 @@
 = render 'partials/content_structure' do
   .card-block
-    .card.card-info.z-depth-0
+    .card.card-danger.z-depth-0
       .card-block
         %p.white-text Para crear un nuevo comercio complete todos los campos con asterisco (#{icon 'asterisk'})
     %hr
@@ -13,4 +13,4 @@
       %hr
       = f.input :url, label: 'Dirección web del comercio'
       = f.input :notify_url, label: 'URL de notificaciones'
-      = f.submit 'Crear Comercio', class: 'btn btn-danger'
+      = f.submit 'Crear Comercio', class: 'btn btn-danger btn-md'

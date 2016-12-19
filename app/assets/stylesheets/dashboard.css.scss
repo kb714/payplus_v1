@@ -34,6 +34,7 @@ a:focus, a:hover {
   &:hover{
     color: color('grey', 'darken-4');
     background: color('grey', 'lighten-2');
+    text-decoration: none;
   }
 }
 .navbar{border-radius: 0;}

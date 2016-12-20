@@ -77,3 +77,5 @@ gem 'client_side_validations-simple_form',
     branch: 'rails5'
 # file upload
 gem 'paperclip', '~> 5.0.0'
+# qr
+gem 'rqrcode'

@@ -17,6 +17,6 @@ class CreateShops < ActiveRecord::Migration[5.0]
   end
 
   def down
-    drop_table :users
+    drop_table :shops
   end
 end

@@ -22,7 +22,7 @@
           .dropdown-menu
             - if @shops.exists?
               - @shops.each do |s|
-                %a.dropdown-item{href: shop_path(slug: s.slug.to_s)}
+                %a.dropdown-item{href: shop_path(slug: s.slug)}
                   %b
                     #{s.name}
             - else

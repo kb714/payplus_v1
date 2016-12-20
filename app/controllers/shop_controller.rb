@@ -2,10 +2,6 @@ class ShopController < ApplicationController
   before_action :authenticate_user!
   layout 'dashboard'
 
-  def index
-
-  end
-
   def create
     @shop = current_user.shops.new(secure_params)
     if @shop.valid?
@@ -27,9 +23,10 @@ class ShopController < ApplicationController
   end
 
   def show
-    sleep 2
     @section = {title: 'Servicios asociados', icon: 'globe'}
     @shop = current_user.shops.find_by(slug: params[:slug])
+    #qr = RQRCode::QRCode.new("https://www.payplus.cl/")
+    #qr.as_png(file: "#{Rails.root}/public/payplus.png")
   end
 
   def update

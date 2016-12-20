@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214191038) do
+ActiveRecord::Schema.define(version: 20161220031356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buttons", force: :cascade do |t|
+    t.integer  "shop_id"
+    t.string   "name"
+    t.string   "slug"
+    t.text     "description"
+    t.integer  "price"
+    t.integer  "charge"
+    t.boolean  "is_stock",    default: false
+    t.integer  "stock"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "shops", force: :cascade do |t|
     t.integer  "user_id"

@@ -1,34 +1,5 @@
 = render 'partials/content_structure' do
-  %nav.navbar.z-depth-0
-    .navbar-brand #{@shop.name}
-    %ul.nav.navbar-nav.nav-flex-icons
-      %li.nav-item.avatar
-        %a.nav-link.waves-effect.btn-flat{href: edit_shop_path(slug: @shop.slug.to_s)}
-          = icon 'pencil-square-o'
-          Editar
-      %li.nav-item.avatar
-        = link_to shop_path(slug: @shop.slug.to_s),
-        data: {confirm: '¿Desea eliminar este comercio?', 'sweet-alert-type': 'warning'},
-        method: :delete, class: 'nav-link waves-effect btn-flat' do
-          = icon 'trash-o'
-          Eliminar
-  %ul.nav.nav-tabs.md-pills.pills-default
-    %li.nav-item
-      %a.nav-link.active.text-xs-center
-        = icon 'home'
-        Inicio
-    %li.nav-item
-      %a.nav-link.text-xs-center
-        = icon 'credit-card'
-        Botones de pago
-    %li.nav-item
-      %a.nav-link.text-xs-center
-        = icon 'envelope-o'
-        Cobros por email
-    %li.nav-item
-      %a.nav-link.text-xs-center
-        = icon 'file-o'
-        Páginas de cobro
+  = render 'shop/partials/shop_structure'
   .card-block
     %p Información de su comercio
     .table-responsive
@@ -53,4 +24,3 @@
             %td.collapsing Imagen
             %td
               = image_tag @shop.image.url(:thumb)
-

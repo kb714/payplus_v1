@@ -1,0 +1,7 @@
+= render 'partials/content_structure' do
+  = render 'shop/partials/shop_structure'
+  .card-block
+    %p Creando nuevo botón
+    = simple_form_for @button, url: button_index_path do |f|
+      = f.input :name
+      = f.submit

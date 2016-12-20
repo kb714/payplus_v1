@@ -1,6 +1,7 @@
 class Shop < ApplicationRecord
   ## relations
-  belongs_to :user
+  belongs_to  :user
+  has_many    :buttons
   ## paperclip
   has_attached_file :image, styles: {medium: '300x300>', thumb: '100x100>'}, default_url: 'https://placehold.it/150x150'
   ## validations
@@ -27,6 +28,10 @@ class Shop < ApplicationRecord
 
   def to_param
     slug&.to_s
+  end
+
+  def slug
+    self[:slug].to_s
   end
 
   def description_param

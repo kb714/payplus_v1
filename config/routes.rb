@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   ## Dashboard Routes
   root to: 'dashboard#index'
   # shop routes
-  resources :shop, path: '', param: :slug
+  resources :shop, except: [:index], path: '', param: :slug do
+    member do
+      resources :button, param: :button_slug, controller: 'shop/button'
+    end
+  end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

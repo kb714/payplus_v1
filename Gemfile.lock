@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/DavyJonesLocker/client_side_validations-simple_form.git
+  remote: https://github.com/DavyJonesLocker/client_side_validations-simple_form.git
   revision: d3466f50f681d2fbd2ec68ee29b8668fec6f51d0
   branch: rails5
   specs:
@@ -8,7 +8,7 @@ GIT
       simple_form (~> 3.3)
 
 GIT
-  remote: git://github.com/DavyJonesLocker/client_side_validations.git
+  remote: https://github.com/DavyJonesLocker/client_side_validations.git
   revision: 261964fdec8051e5d55f85e9074ed77be555e8a5
   branch: rails5
   specs:
@@ -16,6 +16,13 @@ GIT
       jquery-rails (~> 4.0, >= 4.0.1)
       js_regex (~> 1.0, >= 1.0.19)
       rails (>= 5.0.0, < 5.1.0)
+
+PATH
+  remote: lib/transbank/libwebpay
+  specs:
+    libwebpay (2.0.0)
+      nokogiri (~> 1.6, >= 1.6.7.2)
+      savon (~> 2)
 
 GEM
   remote: https://rubygems.org/
@@ -132,9 +139,6 @@ GEM
       turbolinks
     js_regex (1.2.0)
       regexp_parser (>= 0.3.6, <= 0.4.1)
-    libwebpay (2.0.0)
-      nokogiri (~> 1.6, >= 1.6.7.2)
-      savon (~> 2)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -280,7 +284,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks
-  libwebpay
+  libwebpay!
   listen (~> 3.0.5)
   paperclip (~> 5.0.0)
   pg (~> 0.18)

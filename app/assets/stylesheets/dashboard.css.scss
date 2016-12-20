@@ -16,6 +16,10 @@ a:focus, a:hover {
   color: color('red', 'base');
   text-decoration: underline;
 }
+.turbolinks-progress-bar {
+  height: 8px;
+  background-color: color('yellow', 'base');
+}
 .btn-flat{
   color: color('grey', 'darken-2');
   @extend .z-depth-0;

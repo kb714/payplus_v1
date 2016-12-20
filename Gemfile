@@ -53,7 +53,7 @@ gem 'tzinfo-data',
 gem 'hamlit'
 gem 'haml-rails'
 # libwebpay
-gem 'libwebpay'
+gem 'libwebpay', path: 'lib/transbank/libwebpay'
 gem 'signer'
 gem 'savon'
 # Auth control

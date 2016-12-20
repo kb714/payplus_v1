@@ -27,6 +27,7 @@ class ShopController < ApplicationController
   end
 
   def show
+    sleep 2
     @section = {title: 'Servicios asociados', icon: 'globe'}
     @shop = current_user.shops.find_by(slug: params[:slug])
   end

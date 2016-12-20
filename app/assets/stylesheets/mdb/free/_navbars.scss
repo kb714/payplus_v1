@@ -194,3 +194,90 @@
         color: #1C2331;
     }
 }
+//MD-pills
+.nav-tabs.md-pills{
+  border-bottom: none;
+  display: flex;
+  justify-content: center;
+  @media (max-width: 575px){
+    display: list-item;
+    li{
+      width: 100%;
+      display: list-item;
+      a{
+        font-size: 12px;
+      }
+    }
+  }
+}
+.md-pills li {
+  padding: 10px;
+  .nav-link{
+    color: color('grey', 'darken-1');
+    &:hover{
+      border: 1px solid transparent;
+    }
+  }
+}
+.table td.collapsing{
+  width: 1px;
+  white-space: nowrap;
+}
+.table td{
+  vertical-align: middle;
+  font-size: 14px;
+}
+.md-pills.pills-default .nav-item .nav-link.active {
+  //background-color: color('blue-grey', 'darken-2');
+  //color: color('grey', 'darken-1');
+  border: none;
+  background-color: color('blue-grey', 'base');
+}
+.md-pills .nav-item .nav-link.active {
+  color: #fff;
+  border-radius: 2px;
+  transition: all .4s;
+}
+.md-pills .nav-item .nav-link.active, .md-pills .nav-item .nav-link:hover {
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  -o-transition: all .4s;
+  -ms-transition: all .4s;
+}
+.md-pills .nav-item .nav-link, .md-pills .nav-item .nav-link.active {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+.md-pills .nav-item .nav-link.active{
+  @extend .z-depth-0;
+}
+.md-pills .nav-item .nav-link {
+  border-radius: 2px;
+}
+.md-pills .nav-item .nav-link:hover {
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  -o-transition: all .4s;
+  -ms-transition: all .4s;
+}
+.md-pills .nav-item .nav-link:hover {
+  background-color: rgba(158,158,158,.3);
+  transition: all .4s;
+}
+.md-pills .nav-item .nav-link, .md-pills .nav-item .nav-link.active {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+.nav-tabs .nav-link:hover {
+  border-color: #eceeef #eceeef #ddd;
+}
+.nav-tabs .nav-link {
+  display: block;
+  padding: .5em 1em;
+  border-top-right-radius: .25rem;
+  border-top-left-radius: .25rem;
+}

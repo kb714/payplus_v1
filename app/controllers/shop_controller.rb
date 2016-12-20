@@ -32,7 +32,7 @@ class ShopController < ApplicationController
   end
 
   def update
-    @shop = Shop.find_by(slug: params[:slug])
+    @shop = current_user.shops.find_by(slug: params[:slug])
 
     if @shop.update(secure_params)
       redirect_to @shop
@@ -42,7 +42,7 @@ class ShopController < ApplicationController
   end
 
   def destroy
-    @shop = Shop.find_by(slug: params[:slug])
+    @shop = current_user.shops.find_by(slug: params[:slug])
 
     if @shop.destroy
       redirect_to root_path

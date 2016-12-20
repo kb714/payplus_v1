@@ -70,10 +70,10 @@ end
 gem 'sweet-alert2-rails'
 gem 'simple_form'
 gem 'client_side_validations',
-    github: 'DavyJonesLocker/client_side_validations',
+    git: 'https://github.com/DavyJonesLocker/client_side_validations.git',
     branch: 'rails5'
 gem 'client_side_validations-simple_form',
-    github: 'DavyJonesLocker/client_side_validations-simple_form',
+    git: 'https://github.com/DavyJonesLocker/client_side_validations-simple_form.git',
     branch: 'rails5'
 # file upload
 gem 'paperclip', '~> 5.0.0'

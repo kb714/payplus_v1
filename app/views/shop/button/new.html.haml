@@ -5,7 +5,8 @@
     = simple_form_for [@shop, @button], url: {action: :create} do |f|
       = f.input :name, label: 'Nombre'
       = f.input :description, label: 'Descripción', as: :text
-      = f.input :price, label: 'Monto'
+      = f.input :price, label: 'Monto', input_html: {value: f.object.price || '0'}
+      = f.input :charge, label: 'Cargo', input_html: {value: f.object.charge || '0'}
       = f.input :is_stock, label: '¿Posee stock?'
       = f.input :stock, label: 'Stock'
 

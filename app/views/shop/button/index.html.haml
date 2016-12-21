@@ -9,16 +9,18 @@
         %table.table.table-bordered
           %thead
             %tr
+              %th{colspan: 4} Botones creados
+            %tr
               %th Nombre
               %th Descripción
-              %th Monto
+              %th Precio
               %th
           %tbody
             - @buttons.each do |b|
               %tr
                 %td.collapsing #{b.name}
-                %td #{b.description}
-                %td.collapsing #{b.price}
+                %td #{b.description_param}
+                %td.collapsing #{b.price_param}
                 %td.collapsing
                   %a.btn-flat{href: button_path(button_slug: b)} Detalles
   - else

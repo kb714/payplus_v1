@@ -6,6 +6,7 @@ class CreateButtons < ActiveRecord::Migration[5.0]
       t.string  :name
       t.string  :button_slug
       t.text    :description
+      t.string  :qr
 
       t.integer :price
       t.integer :charge

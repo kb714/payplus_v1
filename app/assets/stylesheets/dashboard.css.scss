@@ -26,11 +26,14 @@ a:focus, a:hover {
   -webkit-transition: .2s linear;
   transition: .2s linear;
   position: relative;
-  padding: 8px 30px;
+  padding: 9px 30px;
   border: none;
   margin: 10px;
   text-decoration: none;
   outline: 0!important;
+  &.margin-top{
+    top: 10px;
+  }
   &:hover{
     color: color('grey', 'darken-4');
     background: color('grey', 'lighten-2');

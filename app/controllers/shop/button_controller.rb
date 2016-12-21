@@ -30,10 +30,30 @@ class Shop::ButtonController < ApplicationController
     @button = @shop.buttons.find_by(button_slug: params[:button_slug])
   end
 
+  def update
+    @button = @shop.buttons.find_by(button_slug: params[:button_slug])
+
+    if @button.update(secure_params)
+      redirect_to @button
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @button = @shop.buttons.find_by(button_slug: params[:button_slug])
+
+    if @button.destroy
+      redirect_to button_index_path
+    else
+      render 'show'
+    end
+  end
+
   private
 
   def secure_params
-    params.require(:button).permit(:name, :description, :price, :charge, )
+    params.require(:button).permit(:name, :description, :price, :charge, :is_stock, :stock)
   end
 
   def current_shop

@@ -25,8 +25,6 @@ class ShopController < ApplicationController
   def show
     @section = {title: 'Servicios asociados', icon: 'globe'}
     @shop = current_user.shops.find_by(slug: params[:slug])
-    #qr = RQRCode::QRCode.new("https://www.payplus.cl/")
-    #qr.as_png(file: "#{Rails.root}/public/payplus.png")
   end
 
   def update

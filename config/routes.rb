@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :shop, except: [:index], path: '', param: :slug do
     member do
       resources :button, param: :button_slug, controller: 'shop/button'
+      resources :email, param: :email_slug, controller: 'shop/email'
+      resources :page, param: :page_slug, controller: 'shop/page'
     end
   end
 

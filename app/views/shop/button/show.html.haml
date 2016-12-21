@@ -13,7 +13,7 @@
             %td #{@button.description_param}
           %tr
             %td.collapsing Precio
-            %td #{@button.price}
+            %td #{@button.price_param}
           %tr
             %td.collapsing Cargo
             %td #{@button.charge_param}
@@ -27,9 +27,18 @@
           %tr
             %td.collapsing Fecha de creación
             %td #{@button.created_at}
-    .text-md-right
-      %a.btn.btn-warning.btn-md
-        Editar
-      o
-      %a.btn.btn-danger.btn-md
-        Eliminar
+          %tr
+            %td.collapsing QR
+            %td #{image_tag(@button.qr)}
+    .row
+      .col-md-6.text-md-left.text-xs-center
+        %a.btn-flat.margin-top{href: button_index_path} Volver
+        .clearfix
+        %hr.hidden-md-up
+      .col-md-6.text-xs-center.text-md-right
+        %a.btn.btn-warning.btn-md{href: edit_button_path(button_slug: @button)}
+          Editar
+        = link_to button_path(button_slug: @button),
+          data: {confirm: '¿Desea eliminar este botón?', 'sweet-alert-type': 'warning'},
+          method: :delete, class: 'btn btn-danger btn-md' do
+          Eliminar

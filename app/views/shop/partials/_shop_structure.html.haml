@@ -1,32 +1,20 @@
 %nav.navbar.z-depth-0
   .navbar-brand #{@shop.name}
-  %ul.nav.navbar-nav.nav-flex-icons
-    %li.nav-item.avatar
-      %a.nav-link.waves-effect.btn-flat{href: edit_shop_path(slug: @shop)}
-        = icon 'pencil-square-o'
-        Editar
-    %li.nav-item.avatar
-      = link_to shop_path(slug: @shop),
-        data: {confirm: '¿Desea eliminar este comercio?', 'sweet-alert-type': 'warning'},
-        method: :delete, class: 'nav-link waves-effect btn-flat' do
-        = icon 'trash-o'
-        Eliminar
 %ul.nav.nav-tabs.md-pills.pills-default
   %li.nav-item
     %a.nav-link.text-xs-center{href: shop_path(slug: @shop), :class => ('active' if current_page?(shop_path))}
       = icon 'home'
       Inicio
   %li.nav-item
-    %a.nav-link.text-xs-center{href: button_index_path,
-    :class => ('active' if controller_name == 'button')}
+    %a.nav-link.text-xs-center{href: button_index_path, :class => ('active' if controller_name == 'button')}
       = icon 'credit-card'
       Botones de pago
   %li.nav-item
-    %a.nav-link.text-xs-center
+    %a.nav-link.text-xs-center{href: email_index_path, :class => ('active' if controller_name == 'email')}
       = icon 'envelope-o'
       Cobros por email
   %li.nav-item
-    %a.nav-link.text-xs-center
+    %a.nav-link.text-xs-center{href: page_index_path, :class => ('active' if controller_name == 'page')}
       = icon 'file-o'
       Páginas de cobro
 %hr

@@ -1,9 +1,8 @@
 = render 'partials/content_structure' do
   .card-block
-    .card.card-danger.z-depth-0
-      .card-block
-        %p.white-text Para crear un nuevo comercio complete todos los campos con asterisco (#{icon 'asterisk'})
-    %hr
+    .card.z-depth-0
+      .card-block.text-xs-center.font-weight-normal
+        %p Para crear un nuevo comercio complete todos los campos con asterisco (#{icon 'asterisk'})
     = simple_form_for @shop, validate: true, url: shop_index_path, :html => { :multipart => true } do |f|
       = f.input :name, label: 'Nombre de comercio'
       = f.input :description, as: :text

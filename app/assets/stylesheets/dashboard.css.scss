@@ -23,18 +23,14 @@ a:focus, a:hover {
 .btn-flat{
   color: color('grey', 'darken-2');
   @extend .z-depth-0;
-  border-radius: 2px;
-  border: 0;
-  -webkit-transition: .2s ease-out;
-  transition: .2s ease-out;
-  margin: 6px;
-  white-space: normal !important;
-  word-wrap: break-word;
-  padding-top: .425rem;
-  padding-bottom: .425rem;
-  padding-right: 8px;
-  padding-left: 8px;
-  font-weight: 300;
+  -webkit-transition: .2s linear;
+  transition: .2s linear;
+  position: relative;
+  padding: 8px 30px;
+  border: none;
+  margin: 10px;
+  text-decoration: none;
+  outline: 0!important;
   &:hover{
     color: color('grey', 'darken-4');
     background: color('grey', 'lighten-2');

@@ -1,7 +1,7 @@
 = render 'partials/content_structure' do
   = render 'shop/partials/shop_structure'
   .card-block
-    %p Creando nuevo botón
+    %p Detalles botón de pago
     = simple_form_for [@shop, @button], url: {action: :create} do |f|
       = f.input :name, label: 'Nombre'
       = f.input :description, label: 'Descripción', as: :text

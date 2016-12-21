@@ -1,0 +1,35 @@
+= render 'partials/content_structure' do
+  = render 'shop/partials/shop_structure'
+  .card-block
+    %p Detalles botón de pago
+    .table-responsive
+      %table.table.table-bordered
+        %tbody
+          %tr
+            %td.collapsing Nombre
+            %td #{@button.name}
+          %tr
+            %td.collapsing Descripción
+            %td #{@button.description_param}
+          %tr
+            %td.collapsing Precio
+            %td #{@button.price}
+          %tr
+            %td.collapsing Cargo
+            %td #{@button.charge_param}
+          %tr
+            %td.collapsing ¿Mantiene Stock?
+            %td #{@button.is_stock_param}
+          - if @button.is_stock?
+            %tr
+              %td.collapsing Cantidad en stock
+              %td #{@button.stock}
+          %tr
+            %td.collapsing Fecha de creación
+            %td #{@button.created_at}
+    .text-md-right
+      %a.btn.btn-warning.btn-md
+        Editar
+      o
+      %a.btn.btn-danger.btn-md
+        Eliminar

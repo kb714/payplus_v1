@@ -1,2 +1,26 @@
 = render 'partials/content_structure' do
   = render 'shop/partials/shop_structure'
+  - if @buttons.exists?
+    .card-block.text-xs-right
+      %a.btn.btn-danger.z-depth-0{href: new_button_path(@shop)}
+        Nuevo
+    .card-block
+      .table-responsive
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th Nombre
+              %th Descripción
+              %th Monto
+              %th
+          %tbody
+            - @buttons.each do |b|
+              %tr
+                %td.collapsing #{b.name}
+                %td #{b.description}
+                %td.collapsing #{b.price}
+                %td.collapsing
+                  %a.btn-flat{href: button_path(button_slug: b)} Detalles
+  - else
+    .card-block.text-xs-center
+      %a.btn.btn-danger{href: new_button_path(@shop)} Crear mi primer botón de pago

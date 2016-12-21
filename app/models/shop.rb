@@ -27,11 +27,11 @@ class Shop < ApplicationRecord
   ## display data
 
   def to_param
-    slug&.to_s
+    slug.to_s
   end
 
-  def slug
-    self[:slug].to_s
+  def slug_param
+    self[:button_slug].to_s
   end
 
   def description_param

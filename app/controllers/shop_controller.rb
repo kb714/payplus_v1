@@ -2,6 +2,11 @@ class ShopController < ApplicationController
   before_action :authenticate_user!
   layout 'dashboard'
 
+  def new
+    @section = {title: 'Creando nuevo comercio', icon: 'plus'}
+    @shop = Shop.new
+  end
+
   def create
     @shop = current_user.shops.new(secure_params)
     if @shop.valid?
@@ -10,11 +15,6 @@ class ShopController < ApplicationController
     else
       render action: :new
     end
-  end
-
-  def new
-    @section = {title: 'Creando nuevo comercio', icon: 'plus'}
-    @shop = Shop.new
   end
 
   def edit

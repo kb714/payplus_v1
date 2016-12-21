@@ -4,7 +4,7 @@ class CreateButtons < ActiveRecord::Migration[5.0]
       t.integer   :shop_id
 
       t.string  :name
-      t.string  :slug
+      t.string  :button_slug
       t.text    :description
 
       t.integer :price

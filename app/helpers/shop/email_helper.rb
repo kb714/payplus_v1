@@ -1,0 +1,2 @@
+module Shop::EmailHelper
+end

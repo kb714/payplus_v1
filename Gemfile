@@ -79,3 +79,5 @@ gem 'client_side_validations-simple_form',
 gem 'paperclip', '~> 5.0.0'
 # qr
 gem 'rqrcode'
+# http client
+gem 'httparty'

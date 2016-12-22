@@ -38,6 +38,7 @@
               %td vci
               %td #{@result['vci']}
           -if @result['responsecode'] == '0'
+            = @result.inspect
             .text-xs-center Pago ACEPTADO
             = form_tag(@result['urlredirection']) do
               %input{type: :hidden, name: :token_ws, value: @token}

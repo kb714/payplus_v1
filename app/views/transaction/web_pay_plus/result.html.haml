@@ -1,0 +1,45 @@
+= render 'devise/partials/logo' do
+  .col-xs-12.col-md-6.offset-md-3.col-lg-6.form-container-parent
+    .card
+      .card-block
+        - if @result['error_desc'] == 'TRX_OK'
+          %table.table.table-bordered
+            %tr
+              %td accounting_date
+              %td #{@result['accountingdate']}
+            %tr
+              %td buyorder
+              %td #{@result['buyorder']}
+            %tr
+              %td cardnumber
+              %td #{@result['cardnumber']}
+            %tr
+              %td amount
+              %td #{@result['amount']}
+            %tr
+              %td commercecode
+              %td #{@result['commercecode']}
+            %tr
+              %td authorizationcode
+              %td #{@result['authorizationcode']}
+            %tr
+              %td paymenttypecode
+              %td #{@result['paymenttypecode']}
+            %tr
+              %td responsecode
+              %td #{@result['responsecode']}
+            %tr
+              %td transactiondate
+              %td #{@result['transactiondate']}
+            %tr
+              %td urlredirection
+              %td #{@result['urlredirection']}
+            %tr
+              %td vci
+              %td #{@result['vci']}
+          -if @result['responsecode'] == '0'
+            .text-xs-center Pago ACEPTADO
+            = form_tag(@result['urlredirection']) do
+              %input{type: :hidden, name: :token_ws, value: @token}
+              %button.btn.btn-danger{type: :submit} Continuar
+        - else

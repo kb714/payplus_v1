@@ -40,7 +40,7 @@
           -if @result['responsecode'] == '0'
             = @result.inspect
             .text-xs-center Pago ACEPTADO
-            = form_tag(@result['urlredirection'], id: 'submit_on_load') do
+            %form#submit_on_load{action: @result['urlredirection'], method: :post}
               %input{type: :hidden, name: :token_ws, value: @token}
               %button.btn.btn-danger{type: :submit} Continuar
         - else

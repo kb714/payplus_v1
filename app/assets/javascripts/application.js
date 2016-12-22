@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require transaction/web_pay_plus
 //= require turbolinks

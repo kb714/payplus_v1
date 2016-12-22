@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
+  ## External routes
+  # button route
+  get 'webpay/bpay', to: 'transaction/web_pay_plus#button', as: 'create_webpay_button'
+  post 'webpay/bpay', to: 'transaction/web_pay_plus#button'
+  match 'webpay/result', to: 'transaction/web_pay_plus#result'
+  match 'webpay/end', to: 'transaction/web_pay_plus#end'
   ## Dashboard Routes
   root to: 'dashboard#index'
   # shop routes

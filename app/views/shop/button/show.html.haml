@@ -28,6 +28,11 @@
             %td.collapsing Fecha de creación
             %td #{@button.created_at}
           %tr
+            %td.collapsing URL
+            %td
+              %a{href: create_webpay_button_path(shop_id: @shop.id, button_slug: @button), target: '_blank'}
+                = create_webpay_button_url(shop_id: @shop.id, button_slug: @button)
+          %tr
             %td.collapsing QR
             %td #{image_tag(@button.qr)}
     .row

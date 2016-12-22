@@ -1,0 +1,9 @@
+= render 'devise/partials/logo' do
+  .col-xs-12.col-md-6.offset-md-3.col-lg-6.form-container-parent
+    .card
+      .card-block
+        - if @result['error_desc'] == 'TRX_OK'
+          = form_tag(@result['url']) do
+            %input{type: :hidden, name: :token_ws, value: @result['token']}
+            %button.btn.btn-danger{type: :submit} Pagar
+        - else

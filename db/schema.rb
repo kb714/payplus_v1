@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220031356) do
+ActiveRecord::Schema.define(version: 20161222032830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,14 +18,17 @@ ActiveRecord::Schema.define(version: 20161220031356) do
   create_table "buttons", force: :cascade do |t|
     t.integer  "shop_id"
     t.string   "name"
-    t.string   "slug"
+    t.string   "button_slug"
     t.text     "description"
+    t.text     "retirement_address"
+    t.string   "qr"
     t.integer  "price"
     t.integer  "charge"
-    t.boolean  "is_stock",    default: false
+    t.boolean  "is_stock",           default: false
     t.integer  "stock"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "home_delivery"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "shops", force: :cascade do |t|
@@ -42,6 +45,42 @@ ActiveRecord::Schema.define(version: 20161220031356) do
     t.string   "notify_url"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "shop_id"
+    t.integer  "status",                   default: 0
+    t.string   "type"
+    t.string   "service",                  default: "webpayplus"
+    t.integer  "order"
+    t.integer  "amount"
+    t.string   "client_name"
+    t.string   "client_last_name"
+    t.string   "client_id"
+    t.string   "client_email"
+    t.string   "client_phone"
+    t.string   "product_name"
+    t.text     "product_description"
+    t.text     "product_shipping_address"
+    t.string   "id_session"
+    t.string   "url_return"
+    t.string   "url_final"
+    t.string   "token"
+    t.string   "url_webpay"
+    t.string   "webpay_error"
+    t.string   "accounting_date"
+    t.string   "buy_order"
+    t.string   "card_number"
+    t.float    "webpay_amount"
+    t.string   "commerce_code"
+    t.string   "authorization_code"
+    t.string   "payment_type_code"
+    t.string   "response_code"
+    t.string   "transaction_date"
+    t.string   "url_redirection"
+    t.string   "vci"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   create_table "users", force: :cascade do |t|

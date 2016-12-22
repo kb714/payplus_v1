@@ -1,0 +1,23 @@
+= render 'devise/partials/logo' do
+  .col-xs-6.offset-xs-3.form-container-parent
+    .card
+      .card-block
+        %table.table.table-bordered
+          %tbody
+            - if @button.shop.image?
+              %tr
+                %td.center-block{colspan: 2} #{image_tag @button.shop.image.url(:thumb), class: 'rounded mx-auto d-block'}
+            %tr
+              %td.collapsing Comercio
+              %td #{@button.shop.name}
+            %tr
+              %td.collapsing Monto a pagar
+              %td #{@button.price}
+        %hr
+        = simple_form_for @transaction, url: request.fullpath do |f|
+          = f.input :client_name
+          = f.input :client_last_name
+          = f.input :client_email
+          = f.input :client_id
+          = f.input :client_phone
+          = f.submit 'Revisar', class: 'btn btn-danger btn-md'

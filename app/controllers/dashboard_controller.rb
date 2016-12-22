@@ -1,6 +1,5 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
-  require_relative('../views/certificates/certnormal')
   layout 'dashboard'
 
   def index

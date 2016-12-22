@@ -1,4 +1,5 @@
 class Button < ApplicationRecord
+  include Rails.application.routes.url_helpers
   ## relations
   belongs_to :shop
 
@@ -21,7 +22,7 @@ class Button < ApplicationRecord
   def generate_qr
     path = "#{Rails.root}/public/shops/#{self.shop_id}/buttons/"
     FileUtils.mkdir_p(path) unless File.directory?(path)
-    qr = RQRCode::QRCode.new(self.name.parameterize)
+    qr = RQRCode::QRCode.new(create_webpay_button_url(shop_id: self.shop.id, button_slug: self.button_slug))
     qr.as_png(file: "#{path}#{self.name.parameterize}.png")
     self.qr = "/shops/#{self.shop_id}/buttons/#{self.name.parameterize}.png"
   end

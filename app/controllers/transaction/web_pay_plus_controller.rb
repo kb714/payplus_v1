@@ -59,6 +59,7 @@ class Transaction::WebPayPlusController < ApplicationController
       transaction.transaction_date    = result['transactiondate']
       transaction.url_redirection     = result['urlredirection']
       transaction.vci                 = result['vci']
+      transaction.save
     end
 
   end

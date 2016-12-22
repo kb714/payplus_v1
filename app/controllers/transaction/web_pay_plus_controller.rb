@@ -1,4 +1,5 @@
 class Transaction::WebPayPlusController < ApplicationController
+  include HTTParty
   require_relative('../../views/certificates/certnormal')
   skip_before_filter :verify_authenticity_token, :only => [:result, :end]
 
@@ -61,6 +62,7 @@ class Transaction::WebPayPlusController < ApplicationController
       @transaction.vci                 = @result['vci']
       @transaction.save
     end
+    self.class.post @transaction.url_redirection, query: { token_ws: @token }
   end
 
   def end

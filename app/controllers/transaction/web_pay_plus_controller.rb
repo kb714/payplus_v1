@@ -54,8 +54,8 @@ class Transaction::WebPayPlusController < ApplicationController
   end
 
   def result
-    @transaction = Transaction.find_by(token: params[:token])
-    @transaction.product_description = "Encontrado #{params[:token]}"
+    @transaction = Transaction.find_by(token: params[:token_ws])
+    @transaction.product_description = "Encontrado #{params[:token_ws]}"
     @transaction.save
   end
 

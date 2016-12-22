@@ -24,18 +24,7 @@ class Transaction::WebPayPlusController < ApplicationController
   end
 
   def prepare(transaction_id)
-    libwebpay = Libwebpay.new
-    certificates = CertNormal.new
-
-    config = libwebpay.getConfiguration
-
-    config.commerce_code = certificates.commerce_code
-    config.environment = certificates.environment
-    config.private_key = certificates.private_key
-    config.public_cert = certificates.public_cert
-    config.webpay_cert = certificates.webpay_cert
-
-    webpay = libwebpay.getWebpay(config)
+    webpay = set_webpay
 
     @transaction = Transaction.find_by(id: transaction_id)
 
@@ -54,9 +43,24 @@ class Transaction::WebPayPlusController < ApplicationController
   end
 
   def result
-    @transaction = Transaction.find_by(token: params[:token_ws])
-    @transaction.product_description = "Encontrado #{params[:token_ws]}"
-    @transaction.save
+    transaction = Transaction.find_by(token: params[:token_ws])
+    if transaction.exists?
+      webpay = set_webpay
+      result = webpay.getNormalTransaction.getTransactionResult(transaction.token)
+      if result['error_desc'] == 'TRX_OK'
+        transaction.accounting_date     = result['accountingdate']
+        transaction.buy_order           = result['buyorder']
+        transaction.card_number         = result['cardnumber']
+        transaction.webpay_amount       = result['amount']
+        transaction.commerce_code       = result['commercecode']
+        transaction.authorization_code  = result['authorizationcode']
+        transaction.payment_type_code   = result['paymenttypecode']
+        transaction.response_code       = result['responsecode']
+        transaction.transaction_date    = result['transactiondate']
+        transaction.url_redirection     = result['urlredirection']
+        transaction.vci                 = result['vci']
+      end
+    end
   end
 
   def end
@@ -67,5 +71,20 @@ class Transaction::WebPayPlusController < ApplicationController
 
   def webpay_params
     params.require(:transaction).permit(:client_name, :client_last_name, :client_email, :client_phone)
+  end
+
+  def set_webpay
+    libwebpay = Libwebpay.new
+    certificates = CertNormal.new
+
+    config = libwebpay.getConfiguration
+
+    config.commerce_code = certificates.commerce_code
+    config.environment = certificates.environment
+    config.private_key = certificates.private_key
+    config.public_cert = certificates.public_cert
+    config.webpay_cert = certificates.webpay_cert
+
+    libwebpay.getWebpay(config)
   end
 end

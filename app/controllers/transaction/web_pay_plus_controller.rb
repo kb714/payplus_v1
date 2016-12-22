@@ -1,6 +1,6 @@
 class Transaction::WebPayPlusController < ApplicationController
   require_relative('../../views/certificates/certnormal')
-  skip_before_filter :verify_authenticity_token, :only => [:result]
+  skip_before_filter :verify_authenticity_token, :only => [:result, :end]
 
   def button
     @button = Shop.find_by(id: params[:shop_id]).buttons.find_by(button_slug: params[:button_slug])
@@ -64,7 +64,7 @@ class Transaction::WebPayPlusController < ApplicationController
   end
 
   def end
-
+    @params = params
   end
 
   private

@@ -44,23 +44,23 @@ class Transaction::WebPayPlusController < ApplicationController
 
   def result
     transaction = Transaction.find_by(token: params[:token_ws])
-    if transaction
-      webpay = set_webpay
-      result = webpay.getNormalTransaction.getTransactionResult(transaction.token)
-      if result['error_desc'] == 'TRX_OK'
-        transaction.accounting_date     = result['accountingdate']
-        transaction.buy_order           = result['buyorder']
-        transaction.card_number         = result['cardnumber']
-        transaction.webpay_amount       = result['amount']
-        transaction.commerce_code       = result['commercecode']
-        transaction.authorization_code  = result['authorizationcode']
-        transaction.payment_type_code   = result['paymenttypecode']
-        transaction.response_code       = result['responsecode']
-        transaction.transaction_date    = result['transactiondate']
-        transaction.url_redirection     = result['urlredirection']
-        transaction.vci                 = result['vci']
-      end
+
+    webpay = set_webpay
+    result = webpay.getNormalTransaction.getTransactionResult(transaction.token)
+    if result['error_desc'] == 'TRX_OK'
+      transaction.accounting_date     = result['accountingdate']
+      transaction.buy_order           = result['buyorder']
+      transaction.card_number         = result['cardnumber']
+      transaction.webpay_amount       = result['amount']
+      transaction.commerce_code       = result['commercecode']
+      transaction.authorization_code  = result['authorizationcode']
+      transaction.payment_type_code   = result['paymenttypecode']
+      transaction.response_code       = result['responsecode']
+      transaction.transaction_date    = result['transactiondate']
+      transaction.url_redirection     = result['urlredirection']
+      transaction.vci                 = result['vci']
     end
+
   end
 
   def end

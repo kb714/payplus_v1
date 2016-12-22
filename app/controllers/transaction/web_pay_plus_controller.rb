@@ -62,6 +62,10 @@ class Transaction::WebPayPlusController < ApplicationController
       @transaction.vci                 = @result['vci']
       @transaction.save
     end
+    #test
+    params = {'token_ws' => @token}
+    x = Net::HTTP.post_form(URI.parse(@result['urlredirection']), params)
+    puts x.body
   end
 
   def end

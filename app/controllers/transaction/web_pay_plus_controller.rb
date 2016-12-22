@@ -1,5 +1,6 @@
 class Transaction::WebPayPlusController < ApplicationController
   require_relative('../../views/certificates/certnormal')
+  skip_before_filter :verify_authenticity_token, :only => [:result]
 
   def button
     @button = Shop.find_by(id: params[:shop_id]).buttons.find_by(button_slug: params[:button_slug])
@@ -8,8 +9,8 @@ class Transaction::WebPayPlusController < ApplicationController
       # move to model ---
       @transaction.amount = @button.price
       @transaction.order = rand(11111111..99999999)
-      @transaction.url_return = 'https://app.payplus.cl/webpay/result'
-      @transaction.url_final = 'https://www.payplus.cl/webpay/end'
+      @transaction.url_return = 'http://app.payplus.cl/webpay/result'
+      @transaction.url_final = 'http://www.payplus.cl/webpay/end'
       # -----------------
       if @transaction.valid?
         @transaction.save

@@ -41,6 +41,6 @@
             = @result.inspect
             .text-xs-center Pago ACEPTADO
             = form_tag(@result['urlredirection']) do
-              %input{type: :hidden, name: :token, value: @token}
+              %input{type: :hidden, name: :token_ws, value: @transaction.token}
               %button.btn.btn-danger{type: :submit} Continuar
         - else

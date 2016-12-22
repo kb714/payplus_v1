@@ -10,7 +10,7 @@ class Transaction::WebPayPlusController < ApplicationController
       @transaction.amount = @button.price
       @transaction.order = rand(11111111..99999999)
       @transaction.url_return = 'http://app.payplus.cl/webpay/result'
-      @transaction.url_final = 'http://www.payplus.cl/webpay/end'
+      @transaction.url_final = 'http://app.payplus.cl/webpay/end'
       # -----------------
       if @transaction.valid?
         @transaction.save

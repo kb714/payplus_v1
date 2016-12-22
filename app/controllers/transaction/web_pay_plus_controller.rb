@@ -44,7 +44,7 @@ class Transaction::WebPayPlusController < ApplicationController
 
   def result
     transaction = Transaction.find_by(token: params[:token_ws])
-    if transaction.exists?
+    if transaction
       webpay = set_webpay
       result = webpay.getNormalTransaction.getTransactionResult(transaction.token)
       if result['error_desc'] == 'TRX_OK'

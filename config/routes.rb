@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   # button route
   get 'webpay/bpay', to: 'transaction/web_pay_plus#button', as: 'create_webpay_button'
   post 'webpay/bpay', to: 'transaction/web_pay_plus#button'
-  post 'webpay/result', to: 'transaction/web_pay_plus#result'
-  post 'webpay/end', to: 'transaction/web_pay_plus#end'
+  match 'webpay/result', to: 'transaction/web_pay_plus#result', via: [:get, :post]
+  match 'webpay/end', to: 'transaction/web_pay_plus#end', via: [:get, :post]
   ## Dashboard Routes
   root to: 'dashboard#index'
   # shop routes

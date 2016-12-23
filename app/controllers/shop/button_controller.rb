@@ -34,7 +34,7 @@ class Shop::ButtonController < ApplicationController
     @button = @shop.buttons.find_by(button_slug: params[:button_slug])
 
     if @button.update(secure_params)
-      redirect_to @button
+      redirect_to button_path(@shop, @button)
     else
       render 'edit'
     end

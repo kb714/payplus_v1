@@ -1,0 +1,43 @@
+= render 'devise/partials/logo' do
+  .col-xs-12.col-md-6.offset-md-3.col-lg-6.form-container-parent
+    .card
+      .card-block
+        - if @result['error_desc'] == 'TRX_OK'
+          %table.table.table-bordered
+            %tr
+              %td accounting_date
+              %td #{@transaction.accounting_date}
+            %tr
+              %td buyorder
+              %td #{@transaction.buy_order}
+            %tr
+              %td cardnumber
+              %td #{@transaction.card_number}
+            %tr
+              %td amount
+              %td #{@transaction.webpay_amount}
+            %tr
+              %td commercecode
+              %td #{@transaction.commerce_code}
+            %tr
+              %td authorizationcode
+              %td #{@transaction.authorization_code}
+            %tr
+              %td paymenttypecode
+              %td #{@transaction.payment_type_code}
+            %tr
+              %td responsecode
+              %td #{@transaction.response_code}
+            %tr
+              %td transactiondate
+              %td #{@transaction.transaction_date}
+            %tr
+              %td vci
+              %td #{@transaction.vci}
+          -if @result['responsecode'] == '0'
+            .text-xs-center Pago ACEPTADO
+            %form#submit_on_load{action: @result['urlredirection'], method: :post}
+              %input{type: :hidden, name: :token_ws, value: @token}
+              %button.btn.btn-danger{type: :submit} Continuar
+          - else
+            .text-xs-center Pago Rechazado

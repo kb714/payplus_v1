@@ -9,8 +9,8 @@ class Transaction::WebPayPlusController < ApplicationController
       # move to model ---
       @transaction.amount = @button.price
       @transaction.order = rand(11111111..99999999)
-      @transaction.url_return = 'http://app.payplus.cl/webpay/result'
-      @transaction.url_final = 'http://app.payplus.cl/webpay/end'
+      @transaction.url_return = 'https://app.payplus.cl/webpay/result'
+      @transaction.url_final = 'https://app.payplus.cl/webpay/end'
       # -----------------
       if @transaction.valid?
         @transaction.save
@@ -43,38 +43,29 @@ class Transaction::WebPayPlusController < ApplicationController
   end
 
   def result
-    @token = params[:token_ws]
-    @transaction = Transaction.find_by(token: @token)
-    @transaction.token = @token
+    token = params[:token_ws]
+    @transaction = Transaction.find_by(token: token)
+    @transaction.token = token
     webpay = set_webpay
-    @result = webpay.getNormalTransaction.getTransactionResult(@token)
-    if @result['error_desc'] == 'TRX_OK'
-      @transaction.accounting_date     = @result['accountingdate']
-      @transaction.buy_order           = @result['buyorder']
-      @transaction.card_number         = @result['cardnumber']
-      @transaction.webpay_amount       = @result['amount']
-      @transaction.commerce_code       = @result['commercecode']
-      @transaction.authorization_code  = @result['authorizationcode']
-      @transaction.payment_type_code   = @result['paymenttypecode']
-      @transaction.response_code       = @result['responsecode']
-      @transaction.transaction_date    = @result['transactiondate']
-      @transaction.url_redirection     = @result['urlredirection']
-      @transaction.vci                 = @result['vci']
+    result = webpay.getNormalTransaction.getTransactionResult(token)
+    if result['error_desc'] == 'TRX_OK'
+      @transaction.accounting_date     = result['accountingdate']
+      @transaction.buy_order           = result['buyorder']
+      @transaction.card_number         = result['cardnumber']
+      @transaction.webpay_amount       = result['amount']
+      @transaction.commerce_code       = result['commercecode']
+      @transaction.authorization_code  = result['authorizationcode']
+      @transaction.payment_type_code   = result['paymenttypecode']
+      @transaction.response_code       = result['responsecode']
+      @transaction.transaction_date    = result['transactiondate']
+      @transaction.url_redirection     = result['urlredirection']
+      @transaction.vci                 = result['vci']
       @transaction.save
     end
-    #test
-    params = {'token_ws' => @token}
-    uri = URI.parse(@result['urlredirection'])
-    uri.query = URI.encode_www_form(params)
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    request = Net::HTTP::Post.new(uri.request_uri)
-    http.request(request).body
   end
 
   def end
-    @params = params
+    @transaction = Transaction.find_by(token: params[:token_ws])
   end
 
   private

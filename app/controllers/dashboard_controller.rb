@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
-  layout 'dashboard'
+  layout false
+  layout 'dashboard', :except => [:index]
 
   def index
     #libwebpay = Libwebpay.new

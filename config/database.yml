@@ -84,4 +84,4 @@ production:
   <<: *default
   database: payplus_v1_production
   username: payplus_v1
-  password: <%= ENV['PAYPLUS_V1_DATABASE_PASSWORD'] %>
+  password: 4a5g8iuof8nwbcn8s6g4b%6edm=j
